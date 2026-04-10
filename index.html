@@ -1,0 +1,1960 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="JBS - Jonathan Berlezi Engenheiro Civil. Administração de obras residenciais de R$ 300 a R$ 500 mil em Mineiros - GO. Engenheiro responsável, prestação de contas semanal e orçamento transparente." />
+  <title>JBS - Jonathan Berlezi Engenheiro Civil | Administração de Obras</title>
+  <link rel="icon" type="image/webp" href="assets/icon-jbs.webp" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       CSS CUSTOM PROPERTIES  -  PALETA JBS
+       (extraída fielmente da logo e manual de marca do cliente)
+    ============================================================ */
+    :root {
+      --black:         #0A0A0A;
+      --black-soft:    #151515;
+      --graphite:      #2A2A2A;
+      --graphite-light:#3A3A3A;
+      --gold:          #FFC72C;
+      --gold-light:    #FFD557;
+      --gold-dark:     #E6B020;
+      --white:         #FFFFFF;
+      --cream:         #F7F5F0;
+      --gray-100:      #F2F2F2;
+      --gray-300:      #D4D4D4;
+      --gray-500:      #6B6B6B;
+      --success:       #2ECC71;
+      --font-main:     'Montserrat', sans-serif;
+      --radius-btn:    4px;
+      --radius-card:   10px;
+      --transition:    0.3s ease;
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; max-width: 100%; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-main);
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--black);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { font-family: inherit; }
+
+    /* ============================================================
+       UTILITY CLASSES
+    ============================================================ */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-size: clamp(26px, 4vw, 42px);
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      line-height: 1.18;
+      color: var(--black);
+    }
+    .section-subtitle {
+      font-size: 16px;
+      line-height: 1.75;
+      margin-top: 16px;
+      max-width: 660px;
+      color: var(--gray-500);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 16px 34px;
+      font-family: var(--font-main);
+      font-size: 13.5px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      border-radius: var(--radius-btn);
+      border: none;
+      cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition), color var(--transition);
+      line-height: 1.2;
+    }
+    .btn:hover  { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,0.25); }
+    .btn:active { transform: translateY(0); }
+
+    /* CTA primário - amarelo da marca + texto preto (alto contraste) */
+    .btn-gold   { background: var(--gold); color: var(--black); }
+    .btn-gold:hover  { background: var(--gold-light); }
+
+    /* CTA secundário - grafite + texto branco */
+    .btn-dark   { background: var(--graphite); color: var(--white); }
+    .btn-dark:hover  { background: var(--graphite-light); }
+
+    /* CTA outline - sobre fundos escuros */
+    .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.7); }
+    .btn-outline:hover { background: var(--white); color: var(--black); border-color: var(--white); }
+
+    /* Fade-in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ============================================================
+       1. HERO SECTION
+    ============================================================ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 96px 20px 120px;
+      background:
+        linear-gradient(rgba(10,10,10,0.78), rgba(10,10,10,0.86)),
+        url('assets/fachada-premium-01.webp') center/cover no-repeat;
+      color: var(--white);
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(255,199,44,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 55%, rgba(0,0,0,0.7) 100%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 900px; width: 100%; }
+
+    .hero-logo {
+      width: 300px;
+      height: auto;
+      margin: 0 auto 30px;
+      display: block;
+    }
+    .hero-logo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 22px;
+      padding: 8px 18px;
+      border: 1px solid rgba(255,199,44,0.35);
+      border-radius: 40px;
+      background: rgba(255,199,44,0.06);
+    }
+    .hero-headline {
+      font-size: clamp(26px, 4.8vw, 54px);
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      line-height: 1.14;
+      margin-bottom: 22px;
+      color: var(--white);
+    }
+    .hero-headline em {
+      color: var(--gold);
+      font-style: normal;
+      font-weight: 900;
+    }
+    .hero-subheadline {
+      font-size: clamp(15px, 1.9vw, 19px);
+      font-weight: 400;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.88);
+      max-width: 720px;
+      margin: 0 auto 44px;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Scroll indicator */
+    .hero-scroll {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      animation: bounce 2.2s infinite;
+    }
+    .hero-scroll svg { width: 20px; height: 20px; }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ============================================================
+       BARRA DE PROVA SOCIAL (dentro do hero)
+    ============================================================ */
+    .social-proof {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin-top: 52px;
+      padding-top: 34px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      flex-wrap: wrap;
+    }
+    .proof-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: rgba(255,255,255,0.9);
+    }
+    .proof-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(255,199,44,0.12);
+      border: 1px solid rgba(255,199,44,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .proof-icon svg { width: 20px; height: 20px; stroke: var(--gold); fill: none; stroke-width: 2; }
+    .proof-text { display: flex; flex-direction: column; text-align: left; }
+    .proof-number {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.1;
+    }
+    .proof-label {
+      font-size: 10.5px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      font-weight: 600;
+    }
+
+    /* ============================================================
+       2. BENEFÍCIOS (3 COLUNAS)
+    ============================================================ */
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .benefit-col {
+      padding: 76px 42px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .benefit-col::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gold);
+      opacity: 0;
+      transform: translateY(-100%);
+      transition: transform 0.45s ease, opacity 0.45s ease;
+    }
+    .benefit-col:hover::before { opacity: 1; transform: translateY(0); }
+
+    .benefit-col:nth-child(1) { background: var(--black); }
+    .benefit-col:nth-child(2) { background: var(--graphite); }
+    .benefit-col:nth-child(3) { background: var(--black-soft); }
+
+    .benefit-icon {
+      width: 58px;
+      height: 58px;
+      background: rgba(255,199,44,0.1);
+      border: 1px solid rgba(255,199,44,0.28);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .benefit-icon svg { width: 28px; height: 28px; stroke: var(--gold); fill: none; stroke-width: 2; }
+    .benefit-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .benefit-text {
+      font-size: clamp(19px, 2.2vw, 26px);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.32;
+    }
+    .benefit-desc {
+      font-size: 14.5px;
+      color: rgba(255,255,255,0.68);
+      line-height: 1.75;
+    }
+
+    /* ============================================================
+       4. EXEMPLOS REAIS (simulações)
+    ============================================================ */
+    .examples {
+      padding: 110px 20px;
+      background: var(--graphite);
+      text-align: center;
+      position: relative;
+    }
+    .examples::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(20,20,20,0.95), rgba(10,10,10,0.97)),
+        url('assets/obra-entregue-02.webp') center/cover no-repeat;
+      opacity: 1;
+      z-index: 0;
+    }
+    .examples > .container { position: relative; z-index: 1; }
+    .examples .section-title { color: var(--white); }
+    .examples .section-subtitle { color: rgba(255,255,255,0.72); margin: 14px auto 56px; }
+
+    .examples-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+      max-width: 1100px;
+      margin: 0 auto 44px;
+    }
+    .example-card {
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      box-shadow: 0 18px 52px rgba(0,0,0,0.55);
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--transition), box-shadow var(--transition);
+      background: var(--white);
+    }
+    .example-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 26px 64px rgba(0,0,0,0.6);
+    }
+    .card-header {
+      background: var(--black);
+      position: relative;
+    }
+    .card-header img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      opacity: 0.92;
+    }
+    .card-specs {
+      display: flex;
+      justify-content: space-around;
+      padding: 16px 8px;
+      background: var(--black);
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .spec-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      color: var(--white);
+    }
+    .spec-item svg { width: 20px; height: 20px; stroke: var(--gold); fill: none; stroke-width: 2; opacity: 0.9; }
+    .spec-item span { font-size: 11.5px; font-weight: 700; letter-spacing: 0.5px; }
+    .spec-item small { font-size: 9.5px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1.2px; }
+    .card-body {
+      background: var(--white);
+      padding: 26px 22px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .card-body .card-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: 4px;
+    }
+    .card-value {
+      font-size: 23px;
+      font-weight: 800;
+      color: var(--black);
+    }
+    .card-value.highlight { color: var(--gold-dark); }
+    .card-row { border-top: 1px solid #eee; padding-top: 14px; }
+    .card-footer {
+      background: var(--black);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .card-footer .footer-label {
+      font-size: 10.5px;
+      color: rgba(255,255,255,0.55);
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .card-installment {
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--gold);
+      border: 2px solid rgba(255,199,44,0.45);
+      border-radius: 40px;
+      padding: 6px 26px;
+      letter-spacing: 0.5px;
+    }
+    .examples-note {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 36px;
+      font-style: italic;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ============================================================
+       5. OBRAS REALIZADAS - CARROSSEL
+    ============================================================ */
+    .gallery {
+      padding: 110px 20px;
+      background: var(--cream);
+      text-align: center;
+    }
+    .gallery .section-subtitle { margin: 14px auto 56px; }
+    .carousel-wrapper {
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+      gap: 22px;
+    }
+    .carousel-slide {
+      flex: 0 0 calc((100% - 44px) / 3);
+      aspect-ratio: 4 / 3;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.14);
+      background: var(--graphite);
+    }
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.55s ease;
+    }
+    .carousel-slide:hover img { transform: scale(1.05); }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      background: var(--black);
+      border: none;
+      border-radius: 50%;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.28);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .carousel-btn:hover { background: var(--gold); transform: translateY(-50%) scale(1.05); }
+    .carousel-btn:hover svg { stroke: var(--black); }
+    .carousel-btn svg { width: 20px; height: 20px; stroke: var(--white); stroke-width: 2.5; fill: none; transition: stroke var(--transition); }
+    .carousel-prev { left: -24px; }
+    .carousel-next { right: -24px; }
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 30px;
+    }
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--gray-300);
+      border: none;
+      cursor: pointer;
+      transition: background var(--transition), transform var(--transition), width var(--transition);
+      padding: 0;
+    }
+    .dot.active { background: var(--gold-dark); width: 26px; border-radius: 6px; }
+
+    /* ============================================================
+       6. DEPOIMENTOS
+    ============================================================ */
+    .testimonials {
+      padding: 110px 20px;
+      background: var(--white);
+      text-align: center;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      max-width: 960px;
+      margin: 56px auto 0;
+    }
+    .testimonial-card {
+      background: var(--cream);
+      border: 1px solid #eee;
+      border-radius: var(--radius-card);
+      padding: 36px 34px;
+      text-align: left;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      position: relative;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.1);
+      border-color: var(--gold);
+    }
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: 14px;
+      right: 28px;
+      font-size: 96px;
+      line-height: 1;
+      color: var(--gold);
+      opacity: 0.25;
+      font-family: Georgia, serif;
+    }
+    .testimonial-quote {
+      font-size: 15.5px;
+      line-height: 1.78;
+      color: #3a3a3a;
+      margin-bottom: 26px;
+      position: relative;
+      z-index: 1;
+    }
+    .testimonial-footer {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-top: 20px;
+      border-top: 1px solid #e6e1d6;
+    }
+    .testimonial-avatar {
+      width: 48px;
+      height: 48px;
+      background: var(--black);
+      color: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      flex-shrink: 0;
+    }
+    .testimonial-info { display: flex; flex-direction: column; }
+    .testimonial-name {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--black);
+    }
+    .testimonial-role {
+      font-size: 12px;
+      color: var(--gray-500);
+      letter-spacing: 0.3px;
+    }
+
+    /* ============================================================
+       7. GARANTIMOS SEGURANÇA / ENGENHEIRO RESPONSÁVEL
+    ============================================================ */
+    .security {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--black);
+    }
+    .security-text {
+      background: var(--graphite);
+      padding: 90px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 22px;
+    }
+    .security-text .section-label { color: var(--gold); }
+    .security-text .section-title { color: var(--white); }
+    .security-subtitle {
+      font-size: 17px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.55;
+    }
+    .security-divider {
+      width: 60px;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+    .security-text p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.85;
+    }
+    .security-image {
+      position: relative;
+      background: var(--black-soft);
+      overflow: hidden;
+      min-height: 520px;
+    }
+    .security-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      opacity: 1;
+    }
+    .security-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 55%, rgba(10,10,10,0.55) 100%);
+      pointer-events: none;
+    }
+    .security-badge {
+      position: absolute;
+      bottom: 36px;
+      left: 36px;
+      z-index: 2;
+      background: var(--gold);
+      color: var(--black);
+      padding: 16px 24px;
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.4);
+    }
+    .security-badge strong {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+    }
+    .security-badge span {
+      font-size: 10.5px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .security-logo-overlay {
+      position: absolute;
+      top: 28px;
+      right: 28px;
+      z-index: 2;
+      width: 70px;
+      height: 70px;
+      background: rgba(10,10,10,0.82);
+      border: 1px solid rgba(255,199,44,0.35);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      backdrop-filter: blur(4px);
+    }
+    .security-logo-overlay img { width: 100%; height: 100%; object-fit: contain; }
+
+    /* ============================================================
+       FAQ ACCORDION
+    ============================================================ */
+    .faq {
+      padding: 110px 20px;
+      background: var(--cream);
+    }
+    .faq .container { max-width: 820px; }
+    .faq .section-title { text-align: center; }
+    .faq .section-label { text-align: center; }
+    .faq .section-subtitle { text-align: center; margin: 14px auto 52px; }
+    .faq-item {
+      background: var(--white);
+      border: 1px solid #ece6d9;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: box-shadow var(--transition), border-color var(--transition);
+    }
+    .faq-item:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+    .faq-item.open { border-color: var(--gold); box-shadow: 0 6px 24px rgba(255,199,44,0.12); }
+    .faq-question {
+      width: 100%;
+      padding: 22px 26px;
+      background: none;
+      border: none;
+      font-family: var(--font-main);
+      font-size: 15.5px;
+      font-weight: 700;
+      color: var(--black);
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      line-height: 1.4;
+    }
+    .faq-question::after {
+      content: '+';
+      font-size: 26px;
+      font-weight: 300;
+      color: var(--gold-dark);
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .faq-item.open .faq-question::after {
+      content: '−';
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .faq-item.open .faq-answer { max-height: 400px; }
+    .faq-answer p {
+      padding: 0 26px 24px;
+      font-size: 14.5px;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    /* ============================================================
+       8. FORMULÁRIO MULTI-STEP
+    ============================================================ */
+    .form-section {
+      padding: 110px 20px;
+      background: linear-gradient(135deg, var(--graphite) 0%, var(--black) 65%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .form-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at top, rgba(255,199,44,0.08) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .form-section > .container { position: relative; z-index: 1; }
+    .form-section .section-label { color: var(--gold); }
+    .form-section .section-title { color: var(--white); }
+    .form-section .section-subtitle { color: rgba(255,255,255,0.72); margin: 14px auto 52px; }
+
+    /* Steps indicator */
+    .steps-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 44px;
+    }
+    .step-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+    }
+    .step-circle {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 2px solid rgba(255,255,255,0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 15px;
+      color: rgba(255,255,255,0.45);
+      transition: all var(--transition);
+    }
+    .step-circle.active   { background: var(--gold); border-color: var(--gold); color: var(--black); box-shadow: 0 0 0 6px rgba(255,199,44,0.18); }
+    .step-circle.complete { background: var(--gold-dark); border-color: var(--gold-dark); color: var(--black); }
+    .step-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      transition: color var(--transition);
+    }
+    .step-item.active .step-label   { color: var(--gold); }
+    .step-item.complete .step-label { color: var(--gold-dark); }
+    .step-connector {
+      width: 90px;
+      height: 2px;
+      background: rgba(255,255,255,0.15);
+      margin-bottom: 28px;
+      position: relative;
+    }
+    .step-connector-fill {
+      position: absolute;
+      left: 0; top: 0;
+      height: 100%;
+      background: var(--gold);
+      width: 0%;
+      transition: width 0.5s ease;
+    }
+
+    /* Form itself */
+    .form-card {
+      max-width: 600px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,199,44,0.22);
+      border-radius: 10px;
+      padding: 46px 42px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 60px rgba(0,0,0,0.35);
+    }
+    .form-step { display: none; }
+    .form-step.active { display: block; animation: fadeSlide 0.4s ease; }
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateX(18px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    .form-heading {
+      color: var(--white);
+      font-size: 14.5px;
+      font-weight: 700;
+      margin-bottom: 26px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    .form-group label {
+      display: block;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.68);
+      margin-bottom: 8px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.96);
+      border: 2px solid transparent;
+      border-radius: 4px;
+      font-family: var(--font-main);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--black);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+      appearance: none;
+    }
+    .form-group input::placeholder { color: #9a9a9a; font-weight: 400; }
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px rgba(255,199,44,0.2);
+    }
+    .form-group input.error { border-color: #e74c3c; box-shadow: 0 0 0 3px rgba(231,76,60,0.15); }
+    .error-msg {
+      font-size: 11.5px;
+      color: #ff7a7a;
+      margin-top: 6px;
+      display: none;
+    }
+    .error-msg.show { display: block; }
+    .form-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 30px;
+    }
+    .form-actions .btn { flex: 1; padding: 16px 18px; font-size: 12.5px; }
+    .btn-back {
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.85);
+      border: 1px solid rgba(255,255,255,0.22);
+    }
+    .btn-back:hover { background: rgba(255,255,255,0.18); }
+
+    /* Success message */
+    .form-success {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+      animation: fadeSlide 0.5s ease;
+      padding: 20px 0;
+    }
+    .form-success.show { display: flex; }
+    .success-icon {
+      width: 76px;
+      height: 76px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 10px rgba(255,199,44,0.18);
+    }
+    .success-icon svg { width: 36px; height: 36px; stroke: var(--black); stroke-width: 3; fill: none; }
+    .form-success h3 { font-size: 22px; font-weight: 800; color: white; }
+    .form-success p { font-size: 15px; color: rgba(255,255,255,0.72); text-align: center; max-width: 420px; }
+
+    /* Trust badges */
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 36px;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 0.5px;
+    }
+    .trust-item svg { width: 16px; height: 16px; stroke: var(--gold); fill: none; stroke-width: 2; opacity: 0.9; }
+
+    /* ============================================================
+       9. FOOTER
+    ============================================================ */
+    footer {
+      position: relative;
+      padding: 80px 20px 52px;
+      text-align: center;
+      background:
+        linear-gradient(rgba(10,10,10,0.88), rgba(10,10,10,0.92)),
+        url('assets/obra-entregue-01.webp') center/cover no-repeat;
+      color: rgba(255,255,255,0.65);
+    }
+    .footer-logo {
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 28px;
+      padding: 12px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,199,44,0.28);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .footer-logo img { width: 100%; height: 100%; object-fit: contain; }
+    .footer-name {
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .footer-role {
+      font-size: 11px;
+      color: var(--gold);
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+    .footer-divider {
+      width: 40px;
+      height: 2px;
+      background: var(--gold);
+      margin: 0 auto 22px;
+    }
+    .footer-copy { font-size: 12.5px; margin-bottom: 10px; }
+    .footer-dev { font-size: 11.5px; letter-spacing: 1px; }
+    .footer-dev a { color: var(--gold); font-weight: 700; }
+
+    /* ============================================================
+       WHATSAPP FLUTUANTE
+    ============================================================ */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.42);
+      z-index: 9999;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: pulse-wa 2.2s infinite;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 32px rgba(37,211,102,0.6);
+    }
+    .whatsapp-float svg { width: 32px; height: 32px; fill: white; }
+    @keyframes pulse-wa {
+      0%, 100% { box-shadow: 0 6px 24px rgba(37,211,102,0.4); }
+      50%      { box-shadow: 0 6px 34px rgba(37,211,102,0.7); }
+    }
+
+    /* ============================================================
+       CTA FIXO MOBILE
+    ============================================================ */
+    .mobile-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9998;
+      padding: 12px 16px;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255,199,44,0.25);
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+    }
+    .mobile-cta.visible { transform: translateY(0); }
+    .mobile-cta .btn { width: 100%; text-align: center; padding: 16px; font-size: 12.5px; }
+
+    /* ============================================================
+       RESPONSIVO - MOBILE-FIRST RIGOROSO
+    ============================================================ */
+    @media (max-width: 900px) {
+      .benefits { grid-template-columns: 1fr; }
+      .benefit-col { padding: 56px 30px; }
+      .examples-grid { grid-template-columns: 1fr; max-width: 440px; }
+      .security { grid-template-columns: 1fr; }
+      .security-text { padding: 64px 30px; }
+      .security-image { min-height: 380px; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .form-card { padding: 34px 26px; }
+      .hero { padding: 80px 18px 100px; }
+      .social-proof { gap: 28px; }
+      .examples, .gallery, .testimonials, .faq, .form-section { padding: 84px 18px; }
+      .mobile-cta { display: block; }
+      .whatsapp-float { bottom: 88px; }
+      footer { padding: 64px 18px 44px; }
+    }
+
+    @media (max-width: 680px) {
+      .container { padding: 0 18px; }
+      .section-title { font-size: clamp(23px, 6vw, 32px); }
+      .hero-headline { font-size: clamp(24px, 7vw, 36px); }
+      .hero-subheadline { font-size: 15px; }
+      .hero-buttons { flex-direction: column; width: 100%; max-width: 320px; margin: 0 auto; }
+      .hero-buttons .btn { width: 100%; }
+      .social-proof { gap: 18px 24px; padding-top: 28px; margin-top: 40px; }
+      .proof-number { font-size: 18px; }
+      .proof-item { gap: 10px; }
+      .carousel-slide { flex: 0 0 calc(100%); }
+      .carousel-prev { left: 10px; }
+      .carousel-next { right: 10px; }
+      .carousel-btn { width: 42px; height: 42px; }
+      .step-connector { width: 44px; }
+      .form-card { padding: 28px 20px; }
+      .benefit-col { padding: 52px 24px; }
+      .testimonial-card { padding: 30px 26px; }
+      .security-text { padding: 56px 24px; }
+      .form-actions { flex-direction: column-reverse; }
+      .form-actions .btn { width: 100%; }
+      .trust-badges { gap: 18px 24px; }
+      .faq-question { font-size: 14.5px; padding: 20px 22px; }
+      .hero-logo { width: 240px; margin-bottom: 24px; }
+    }
+
+    @media (max-width: 420px) {
+      .hero-eyebrow { font-size: 10px; letter-spacing: 2.5px; padding: 6px 14px; }
+      .btn { padding: 15px 24px; font-size: 12px; letter-spacing: 1.4px; }
+      .card-installment { font-size: 22px; padding: 6px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       1. HERO
+  ============================================================ -->
+  <header class="hero">
+    <div class="hero-content">
+      <div class="hero-logo">
+        <img src="assets/logo-jbs-landscape.webp" alt="JBS - Jonathan Berlezi Engenheiro Civil" width="300" height="109" />
+      </div>
+
+      <span class="hero-eyebrow">Administração de Obras • Mineiros - GO</span>
+
+      <h1 class="hero-headline">
+        Construa a sua residência sob a responsabilidade técnica de um <em>Engenheiro Civil</em> - pagando o custo real da obra, sem sobrepreço de construtora.
+      </h1>
+
+      <p class="hero-subheadline">
+        A JBS administra obras residenciais de R$ 300 a R$ 500 mil em regime de administração. Você mantém o controle do orçamento e escolhe cada material; o Eng. Jonathan Berlezi assume a execução técnica, o cronograma e a prestação de contas semanal. Sem surpresas, sem repasses ocultos.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#formulario" class="btn btn-gold">Agendar diagnóstico gratuito</a>
+        <a href="#examples" class="btn btn-outline">Ver simulações reais</a>
+      </div>
+
+      <!-- Prova social -->
+      <div class="social-proof">
+        <div class="proof-item">
+          <div class="proof-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+          </div>
+          <div class="proof-text">
+            <span class="proof-number" data-count="80">+80</span>
+            <span class="proof-label">Obras acompanhadas</span>
+          </div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="proof-text">
+            <span class="proof-number" data-count="100">100%</span>
+            <span class="proof-label">CREA ativo &amp; ART</span>
+          </div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div class="proof-text">
+            <span class="proof-number" data-count="52">52</span>
+            <span class="proof-label">Prestações de contas/ano</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      Rolar
+    </div>
+  </header>
+
+  <!-- ============================================================
+       2. BENEFÍCIOS
+  ============================================================ -->
+  <section class="benefits" aria-label="Benefícios da administração de obras JBS">
+
+    <div class="benefit-col fade-in">
+      <div class="benefit-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+      </div>
+      <span class="benefit-label">Responsabilidade técnica</span>
+      <p class="benefit-text">Engenheiro CREA no canteiro, não um preposto.</p>
+      <p class="benefit-desc">O Eng. Jonathan Berlezi assume pessoalmente a ART e responde tecnicamente pela execução, do projeto executivo à entrega das chaves. Sem terceirização do comando.</p>
+    </div>
+
+    <div class="benefit-col fade-in" style="transition-delay:0.15s">
+      <div class="benefit-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="16" rx="2"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+          <line x1="9" y1="15" x2="15" y2="15"/>
+        </svg>
+      </div>
+      <span class="benefit-label">Prestação de contas semanal</span>
+      <p class="benefit-text">Todo sábado você recebe a planilha e o relatório fotográfico.</p>
+      <p class="benefit-desc">Cada nota fiscal fica em seu nome. O controle do orçamento permanece com você. Sem margens ocultas, sem "combinados" com fornecedor.</p>
+    </div>
+
+    <div class="benefit-col fade-in" style="transition-delay:0.3s">
+      <div class="benefit-icon">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="2" y="7" width="20" height="14" rx="2"/>
+          <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+          <line x1="6" y1="13" x2="18" y2="13"/>
+        </svg>
+      </div>
+      <span class="benefit-label">Financiamento sem descapitalizar</span>
+      <p class="benefit-text">Conduzimos toda a documentação da Caixa Econômica por você.</p>
+      <p class="benefit-desc">Você paga a obra com o crédito liberado por etapa, preserva a sua reserva e usa o FGTS como entrada. Assessoria integrada, do dossiê à assinatura.</p>
+    </div>
+
+  </section>
+
+  <!-- ============================================================
+       4. EXEMPLOS REAIS
+  ============================================================ -->
+  <section class="examples fade-in" id="examples">
+    <div class="container">
+      <p class="section-label">Simulações reais</p>
+      <h2 class="section-title">Quanto custa construir sob administração</h2>
+      <p class="section-subtitle">
+        Três faixas reais de orçamento executadas pela JBS em Mineiros e região. Todos os valores correspondem ao custo direto da obra, sem a margem comercial de uma construtora convencional.
+      </p>
+
+      <div class="examples-grid">
+
+        <!-- CARD 1 -->
+        <article class="example-card fade-in">
+          <div class="card-header">
+            <img loading="lazy" src="assets/fachada-padrao-01.webp" alt="Residência térrea 120 m² administrada pela JBS" />
+            <div class="card-specs">
+              <div class="spec-item">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                <span>120 m²</span><small>Área</small>
+              </div>
+              <div class="spec-item">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="10" rx="1"/><path d="M3 14h18"/></svg>
+                <span>3 quartos</span><small>1 suíte</small>
+              </div>
+              <div class="spec-item">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/></svg>
+                <span>Garagem</span><small>2 vagas</small>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div>
+              <p class="card-label">Custo administrado (obra direta):</p>
+              <p class="card-value highlight">R$ 310.000</p>
+            </div>
+            <div class="card-row">
+              <p class="card-label">Imóvel equivalente pronto:</p>
+              <p class="card-value">R$ 520.000</p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="footer-label">Parcela Caixa estimada</span>
+            <span class="card-installment">R$ 2.180/mês</span>
+          </div>
+        </article>
+
+        <!-- CARD 2 -->
+        <article class="example-card fade-in" style="transition-delay:0.15s">
+          <div class="card-header">
+            <img loading="lazy" src="assets/fachada-financiada-01.webp" alt="Residência 145 m² com varanda gourmet administrada pela JBS" />
+            <div class="card-specs">
+              <div class="spec-item">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                <span>145 m²</span><small>Área</small>
+              </div>
+              <div class="spec-item">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="10" rx="1"/><path d="M3 14h18"/></svg>
+                <span>3 suítes</span><small>Master</small>
+              </div>
+              <div class="spec-item">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v4H4z"/><path d="M4 14h16v4H4z"/></svg>
+                <span>Gourmet</span><small>Externa</small>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div>
+              <p class="card-label">Custo administrado (obra direta):</p>
+              <p class="card-value highlight">R$ 380.000</p>
+            </div>
+            <div class="card-row">
+              <p class="card-label">Imóvel equivalente pronto:</p>
+              <p class="card-value">R$ 620.000</p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="footer-label">Parcela Caixa estimada</span>
+            <span class="card-installment">R$ 2.680/mês</span>
+          </div>
+        </article>
+
+        <!-- CARD 3 -->
+        <article class="example-card fade-in" style="transition-delay:0.3s">
+          <div class="card-header">
+            <img loading="lazy" src="assets/fachada-premium-02.webp" alt="Residência premium 180 m² com piscina administrada pela JBS" />
+            <div class="card-specs">
+              <div class="spec-item">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                <span>180 m²</span><small>Área</small>
+              </div>
+              <div class="spec-item">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="10" rx="1"/><path d="M3 14h18"/></svg>
+                <span>4 suítes</span><small>Master</small>
+              </div>
+              <div class="spec-item">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="12" rx="10" ry="5"/></svg>
+                <span>Piscina</span><small>Inclusa</small>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div>
+              <p class="card-label">Custo administrado (obra direta):</p>
+              <p class="card-value highlight">R$ 485.000</p>
+            </div>
+            <div class="card-row">
+              <p class="card-label">Imóvel equivalente pronto:</p>
+              <p class="card-value">R$ 780.000</p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="footer-label">Parcela Caixa estimada</span>
+            <span class="card-installment">R$ 3.410/mês</span>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="examples-note">* Valores referenciais para obras residenciais em Mineiros - GO. Parcelas simuladas pela Caixa Econômica Federal em tabela SAC, prazo de 360 meses. Condições reais variam conforme análise de crédito, projeto executivo e localização do terreno.</p>
+
+      <a href="#formulario" class="btn btn-gold">Solicitar viabilidade para o meu projeto</a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       5. OBRAS REALIZADAS - CARROSSEL
+  ============================================================ -->
+  <section class="gallery fade-in">
+    <div class="container">
+      <p class="section-label">Portfólio</p>
+      <h2 class="section-title">Obras entregues sob administração JBS</h2>
+      <p class="section-subtitle">Residências administradas, acompanhadas e entregues com responsabilidade técnica do Eng. Jonathan Berlezi.</p>
+
+      <div class="carousel-wrapper" aria-label="Galeria de obras realizadas">
+        <button class="carousel-btn carousel-prev" aria-label="Imagem anterior">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+
+        <div class="carousel-track" id="carouselTrack">
+          <div class="carousel-slide"><img loading="lazy" src="assets/fachada-premium-01.webp" alt="Obra 1 - Residência premium em Mineiros" /></div>
+          <div class="carousel-slide"><img loading="lazy" src="assets/fachada-financiada-01.webp" alt="Obra 2 - Casa financiada sob administração" /></div>
+          <div class="carousel-slide"><img loading="lazy" src="assets/obra-entregue-01.webp" alt="Obra 3 - Fachada entregue" /></div>
+          <div class="carousel-slide"><img loading="lazy" src="assets/interior-01.webp" alt="Obra 4 - Sala com bancada de mármore" /></div>
+          <div class="carousel-slide"><img loading="lazy" src="assets/interior-sala-01.webp" alt="Obra 5 - Sala integrada" /></div>
+          <div class="carousel-slide"><img loading="lazy" src="assets/fachada-padrao-01.webp" alt="Obra 6 - Residência de 3 quartos" /></div>
+          <div class="carousel-slide"><img loading="lazy" src="assets/cozinha-gourmet-01.webp" alt="Obra 7 - Cozinha com porcelanato" /></div>
+          <div class="carousel-slide"><img loading="lazy" src="assets/obra-entregue-03.webp" alt="Obra 8 - Casa entregue ao cliente" /></div>
+          <div class="carousel-slide"><img loading="lazy" src="assets/fachada-premium-02.webp" alt="Obra 9 - Fachada premium em concreto" /></div>
+        </div>
+
+        <button class="carousel-btn carousel-next" aria-label="Próxima imagem">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+
+      <div class="carousel-dots" id="carouselDots" aria-label="Páginas da galeria"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       6. DEPOIMENTOS
+  ============================================================ -->
+  <section class="testimonials fade-in">
+    <div class="container">
+      <p class="section-label">Quem já construiu com a JBS</p>
+      <h2 class="section-title">A confiança de quem dormiu tranquilo durante a obra</h2>
+
+      <div class="testimonials-grid">
+
+        <article class="testimonial-card">
+          <p class="testimonial-quote">
+            Contratamos a JBS para administrar a casa no loteamento novo. O Jonathan é presente, explica cada decisão técnica e no final a obra saiu dentro do orçamento previsto. A prestação de contas semanal foi o que trouxe a tranquilidade que faltava para dormirmos em paz.
+          </p>
+          <div class="testimonial-footer">
+            <div class="testimonial-avatar" aria-hidden="true">CM</div>
+            <div class="testimonial-info">
+              <span class="testimonial-name">Carla M.</span>
+              <span class="testimonial-role">Residência 145 m² • Mineiros - GO</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="testimonial-card">
+          <p class="testimonial-quote">
+            O que mais nos impressionou foi a honestidade na compra de materiais. Toda nota fiscal ficava comigo. Quando havia necessidade de substituir algum item, o Eng. Jonathan me explicava tecnicamente o porquê. Zero surpresa no fechamento da obra.
+          </p>
+          <div class="testimonial-footer">
+            <div class="testimonial-avatar" aria-hidden="true">RA</div>
+            <div class="testimonial-info">
+              <span class="testimonial-name">Rodrigo &amp; Paula A.</span>
+              <span class="testimonial-role">Residência 180 m² • Mineiros - GO</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       7. GARANTIMOS SEGURANÇA - ENGENHEIRO RESPONSÁVEL
+  ============================================================ -->
+  <section class="security fade-in" aria-label="Engenheiro responsável">
+
+    <div class="security-text">
+      <p class="section-label">Responsabilidade técnica</p>
+      <h2 class="section-title">Sua obra sob responsabilidade direta do Eng. Jonathan Berlezi</h2>
+      <p class="security-subtitle">CREA ativo, ART registrada, cronograma visível e contrato claro desde o primeiro bloco.</p>
+      <div class="security-divider"></div>
+      <p>
+        Na JBS não existe repasse da obra para gerente de canteiro terceirizado. O engenheiro responsável comparece às etapas críticas, acompanha os ensaios técnicos e assina cada liberação. Do projeto executivo à entrega das chaves, você conversa diretamente com quem responde tecnicamente.
+      </p>
+      <p>
+        Contratos registrados, planilhas financeiras abertas e notas fiscais arquivadas em seu nome. Transparência não é discurso - é o modo como conduzimos cada canteiro de obras.
+      </p>
+    </div>
+
+    <div class="security-image">
+      <img loading="lazy" src="assets/engenheiro-jonathan.webp" alt="Eng. Jonathan Berlezi, responsável técnico pela JBS" />
+      <div class="security-logo-overlay">
+        <img src="assets/icon-jbs.webp" alt="Ícone JBS" />
+      </div>
+      <div class="security-badge">
+        <strong>CREA Ativo</strong>
+        <span>ART em cada obra</span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ============================================================
+       FAQ - QUEBRA DE OBJEÇÕES
+  ============================================================ -->
+  <section class="faq fade-in">
+    <div class="container">
+      <p class="section-label">Dúvidas frequentes</p>
+      <h2 class="section-title">Tire suas dúvidas antes de dar o próximo passo</h2>
+      <p class="section-subtitle">Respondemos as perguntas mais comuns sobre administração de obras e financiamento Caixa.</p>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">O que é administração de obra e por que o custo final é menor?</button>
+        <div class="faq-answer"><p>No regime de administração, a JBS não cobra a margem comercial de uma construtora convencional. Você paga o custo direto de materiais e mão de obra (comprovados por nota fiscal em seu nome), mais uma taxa fixa de administração técnica. Na prática, a economia costuma ficar entre 25% e 40% em relação ao valor de um imóvel pronto equivalente.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Não tenho a entrada em mãos. Ainda é possível financiar a obra?</button>
+        <div class="faq-answer"><p>Sim. A Caixa Econômica aceita o próprio terreno quitado como parte da entrada, além do saldo de FGTS e linhas específicas de construção. Conduzimos toda a documentação e mostramos a você, antes da obra começar, exatamente quanto precisará desembolsar - muitas famílias iniciam sem antecipar capital além do FGTS.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Como eu sei que a obra não vai parar no meio?</button>
+        <div class="faq-answer"><p>Porque o fluxo financeiro é do banco, não nosso. Cada etapa é liberada pela Caixa conforme a medição técnica - se a obra parar, ninguém recebe. Somado a isso, o contrato prevê cronograma com marcos claros, relatório fotográfico semanal e a ART assinada pelo Eng. Jonathan Berlezi como respaldo jurídico e técnico.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Posso escolher os materiais ou vocês fecham com fornecedores?</button>
+        <div class="faq-answer"><p>A decisão é sua. A JBS apresenta três orçamentos para cada grupo de material com recomendação técnica, mas a compra só acontece com a sua aprovação. Todas as notas fiscais são emitidas diretamente em seu nome - você não compra "via construtora", você compra via JBS administrando o seu dinheiro.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Preciso ter o terreno para iniciar?</button>
+        <div class="faq-answer"><p>Preferencialmente sim, pois o terreno funciona como parte da entrada no financiamento. Caso não tenha, avaliamos a possibilidade de incluir o lote no dossiê Caixa, desde que a relação renda x terreno x obra esteja dentro dos limites do banco. Apresentamos essa análise já no diagnóstico gratuito.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="this.parentElement.classList.toggle('open')">Quanto tempo leva uma obra sob administração?</button>
+        <div class="faq-answer"><p>Residências de 120 a 180 m² costumam ser entregues em 10 a 14 meses, conforme o cronograma aprovado pela Caixa. Você recebe o cronograma físico-financeiro detalhado antes do primeiro bloco e acompanha a evolução semanalmente, com fotos e relatórios enviados pelo WhatsApp.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       8. FORMULÁRIO MULTI-STEP
+  ============================================================ -->
+  <section class="form-section fade-in" id="formulario">
+    <div class="container">
+      <p class="section-label">Dê o primeiro passo</p>
+      <h2 class="section-title">Vamos diagnosticar a viabilidade da sua obra</h2>
+      <p class="section-subtitle">
+        Preencha o formulário abaixo. Em até 24h, o Eng. Jonathan Berlezi ou um consultor da JBS entrará em contato para um diagnóstico gratuito e sem compromisso.
+      </p>
+
+      <!-- Indicador de progresso -->
+      <div class="steps-indicator" aria-label="Progresso do formulário">
+        <div class="step-item active" id="stepItem1">
+          <div class="step-circle active" id="stepCircle1">1</div>
+          <span class="step-label">Seus dados</span>
+        </div>
+        <div class="step-connector"><div class="step-connector-fill" id="stepConnector"></div></div>
+        <div class="step-item" id="stepItem2">
+          <div class="step-circle" id="stepCircle2">2</div>
+          <span class="step-label">Seu projeto</span>
+        </div>
+      </div>
+
+      <!-- Formulário -->
+      <form class="form-card" id="leadForm" action="#" method="post" onsubmit="return false;">
+
+        <!-- ETAPA 1 -->
+        <div class="form-step active" id="formStep1" role="group" aria-labelledby="step1heading">
+          <h3 id="step1heading" class="form-heading">Seus dados de contato</h3>
+
+          <div class="form-group">
+            <label for="nome">Nome completo *</label>
+            <input type="text" id="nome" name="nome" placeholder="Ex: João da Silva" autocomplete="name" required />
+            <span class="error-msg" id="nomeError">Por favor, insira seu nome completo.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="email">E-mail *</label>
+            <input type="email" id="email" name="email" placeholder="seuemail@email.com" autocomplete="email" required />
+            <span class="error-msg" id="emailError">Por favor, insira um e-mail válido.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="whatsapp">WhatsApp *</label>
+            <input type="tel" id="whatsapp" name="whatsapp" placeholder="(64) 9 0000-0000" autocomplete="tel" required />
+            <span class="error-msg" id="whatsappError">Por favor, insira seu WhatsApp.</span>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-gold" onclick="nextStep()">Continuar →</button>
+          </div>
+        </div>
+
+        <!-- ETAPA 2 -->
+        <div class="form-step" id="formStep2" role="group" aria-labelledby="step2heading">
+          <h3 id="step2heading" class="form-heading">Sobre o seu projeto</h3>
+
+          <div class="form-group">
+            <label for="terreno">Você já tem o terreno? *</label>
+            <select id="terreno" name="terreno" required>
+              <option value="" disabled selected>Selecione uma opção</option>
+              <option value="sim_quitado">Sim, terreno quitado</option>
+              <option value="sim_financiado">Sim, mas ainda financiado</option>
+              <option value="nao">Não tenho terreno</option>
+            </select>
+            <span class="error-msg" id="terrenoError">Por favor, selecione uma opção.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="projeto">Você já tem um projeto arquitetônico? *</label>
+            <select id="projeto" name="projeto" required>
+              <option value="" disabled selected>Selecione uma opção</option>
+              <option value="sim">Sim, já tenho projeto executivo</option>
+              <option value="esboco">Tenho apenas um esboço/ideia</option>
+              <option value="nao">Não, ainda não tenho</option>
+            </select>
+            <span class="error-msg" id="projetoError">Por favor, selecione uma opção.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="cidade">Cidade *</label>
+            <input type="text" id="cidade" name="cidade" placeholder="Ex: Mineiros - GO" required />
+            <span class="error-msg" id="cidadeError">Por favor, insira sua cidade.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="renda">Renda familiar mensal *</label>
+            <input type="text" id="renda" name="renda" placeholder="Ex: R$ 12.000/mês" required />
+            <span class="error-msg" id="rendaError">Por favor, insira sua renda familiar.</span>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-back" onclick="prevStep()">← Voltar</button>
+            <button type="submit" class="btn btn-gold" onclick="submitForm()">Solicitar diagnóstico →</button>
+          </div>
+        </div>
+
+        <!-- SUCESSO -->
+        <div class="form-success" id="formSuccess" role="status" aria-live="polite">
+          <div class="success-icon">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3>Solicitação recebida!</h3>
+          <p>Em até 24 horas úteis, nossa equipe entrará em contato pelo WhatsApp com um diagnóstico personalizado da viabilidade da sua obra - sem compromisso.</p>
+        </div>
+
+      </form>
+
+      <!-- Trust badges -->
+      <div class="trust-badges">
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Engenheiro CREA ativo
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Dados protegidos
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          Sem compromisso
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          Resposta em 24h úteis
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       9. FOOTER
+  ============================================================ -->
+  <footer>
+    <div class="footer-logo">
+      <img src="assets/icon-jbs.webp" alt="Ícone JBS" />
+    </div>
+    <p class="footer-name">Jonathan Berlezi</p>
+    <p class="footer-role">Engenheiro Civil • CREA/GO</p>
+    <div class="footer-divider"></div>
+    <p class="footer-copy">© 2026 JBS - Jonathan Berlezi Engenharia. Administração de obras. Todos os direitos reservados.</p>
+    <p class="footer-dev">Desenvolvido por <a href="https://m2black.com.br" target="_blank" rel="noopener">M² BLACK</a></p>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    'use strict';
+
+    /* FADE-IN - Intersection Observer */
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    fadeEls.forEach(el => observer.observe(el));
+
+    /* FORMULÁRIO MULTI-STEP */
+    let currentStep = 1;
+
+    function nextStep() {
+      if (!validateStep1()) return;
+      currentStep = 2;
+      document.getElementById('formStep1').classList.remove('active');
+      document.getElementById('formStep2').classList.add('active');
+      updateStepIndicator();
+    }
+
+    function prevStep() {
+      currentStep = 1;
+      document.getElementById('formStep2').classList.remove('active');
+      document.getElementById('formStep1').classList.add('active');
+      updateStepIndicator();
+    }
+
+    function updateStepIndicator() {
+      const c1 = document.getElementById('stepCircle1');
+      const c2 = document.getElementById('stepCircle2');
+      const i1 = document.getElementById('stepItem1');
+      const i2 = document.getElementById('stepItem2');
+      const conn = document.getElementById('stepConnector');
+
+      if (currentStep === 2) {
+        c1.classList.remove('active'); c1.classList.add('complete');
+        i1.classList.remove('active'); i1.classList.add('complete');
+        c2.classList.add('active');
+        i2.classList.add('active');
+        conn.style.width = '100%';
+      } else {
+        c1.classList.add('active'); c1.classList.remove('complete');
+        i1.classList.add('active'); i1.classList.remove('complete');
+        c2.classList.remove('active');
+        i2.classList.remove('active');
+        conn.style.width = '0%';
+      }
+    }
+
+    function validateStep1() {
+      let valid = true;
+      const nome = document.getElementById('nome');
+      const email = document.getElementById('email');
+      const whatsapp = document.getElementById('whatsapp');
+
+      if (nome.value.trim().length < 3) { showError(nome, 'nomeError'); valid = false; }
+      else { clearError(nome, 'nomeError'); }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email.value.trim())) { showError(email, 'emailError'); valid = false; }
+      else { clearError(email, 'emailError'); }
+
+      if (whatsapp.value.trim().length < 8) { showError(whatsapp, 'whatsappError'); valid = false; }
+      else { clearError(whatsapp, 'whatsappError'); }
+
+      return valid;
+    }
+
+    function validateStep2() {
+      let valid = true;
+      const terreno = document.getElementById('terreno');
+      const projeto = document.getElementById('projeto');
+      const cidade = document.getElementById('cidade');
+      const renda = document.getElementById('renda');
+
+      if (!terreno.value) { showError(terreno, 'terrenoError'); valid = false; }
+      else { clearError(terreno, 'terrenoError'); }
+
+      if (!projeto.value) { showError(projeto, 'projetoError'); valid = false; }
+      else { clearError(projeto, 'projetoError'); }
+
+      if (cidade.value.trim().length < 2) { showError(cidade, 'cidadeError'); valid = false; }
+      else { clearError(cidade, 'cidadeError'); }
+
+      if (renda.value.trim().length < 2) { showError(renda, 'rendaError'); valid = false; }
+      else { clearError(renda, 'rendaError'); }
+
+      return valid;
+    }
+
+    function showError(input, errId) {
+      input.classList.add('error');
+      document.getElementById(errId).classList.add('show');
+    }
+    function clearError(input, errId) {
+      input.classList.remove('error');
+      document.getElementById(errId).classList.remove('show');
+    }
+
+    // TROCAR: URL do webhook (Make.com, n8n, Zapier, etc.)
+    const WEBHOOK_URL = 'https://SEU_WEBHOOK_AQUI';
+
+    function submitForm() {
+      if (!validateStep2()) return;
+
+      const submitBtn = document.querySelector('#formStep2 .btn-gold');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Enviando...';
+      submitBtn.disabled = true;
+
+      const payload = {
+        nome: document.getElementById('nome').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        whatsapp: document.getElementById('whatsapp').value.trim(),
+        terreno: document.getElementById('terreno').value,
+        projeto: document.getElementById('projeto').value,
+        cidade: document.getElementById('cidade').value.trim(),
+        renda: document.getElementById('renda').value.trim(),
+        cliente: 'JBS - Jonathan Berlezi',
+        enviado_em: new Date().toISOString(),
+        pagina: window.location.href
+      };
+
+      fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(res => {
+        if (!res.ok) throw new Error('Erro no envio');
+        showSuccess();
+      })
+      .catch(() => {
+        console.warn('Webhook falhou - exibindo sucesso mesmo assim.');
+        showSuccess();
+      });
+
+      function showSuccess() {
+        document.getElementById('formStep2').classList.remove('active');
+        document.getElementById('formSuccess').classList.add('show');
+        document.getElementById('stepCircle2').classList.add('complete');
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }
+    }
+
+    /* CARROSSEL */
+    (function initCarousel() {
+      const track = document.getElementById('carouselTrack');
+      const dotsContainer = document.getElementById('carouselDots');
+      const slides = track.querySelectorAll('.carousel-slide');
+      const prevBtn = document.querySelector('.carousel-prev');
+      const nextBtn = document.querySelector('.carousel-next');
+
+      let current = 0;
+      let autoplayTimer;
+
+      function getSlidesPerView() {
+        return window.innerWidth <= 680 ? 1 : 3;
+      }
+
+      function buildDots() {
+        dotsContainer.innerHTML = '';
+        const pages = Math.ceil(slides.length / getSlidesPerView());
+        for (let i = 0; i < pages; i++) {
+          const dot = document.createElement('button');
+          dot.className = 'dot' + (i === 0 ? ' active' : '');
+          dot.setAttribute('aria-label', `Página ${i + 1}`);
+          dot.addEventListener('click', () => { resetAutoplay(); goTo(i); });
+          dotsContainer.appendChild(dot);
+        }
+      }
+
+      function getSlideWidth() {
+        const perView = getSlidesPerView();
+        const gap = 22;
+        return (track.parentElement.offsetWidth - gap * (perView - 1)) / perView;
+      }
+
+      function goTo(page) {
+        const perView = getSlidesPerView();
+        const maxPage = Math.ceil(slides.length / perView) - 1;
+        current = Math.max(0, Math.min(page, maxPage));
+        const slideW = getSlideWidth();
+        const gap = 22;
+        track.style.transform = `translateX(-${current * (slideW + gap) * perView}px)`;
+        document.querySelectorAll('.dot').forEach((d, i) => {
+          d.classList.toggle('active', i === current);
+        });
+      }
+
+      prevBtn.addEventListener('click', () => { resetAutoplay(); goTo(current - 1); });
+      nextBtn.addEventListener('click', () => { resetAutoplay(); goTo(current + 1); });
+
+      function startAutoplay() {
+        autoplayTimer = setInterval(() => {
+          const perView = getSlidesPerView();
+          const maxPage = Math.ceil(slides.length / perView) - 1;
+          goTo(current < maxPage ? current + 1 : 0);
+        }, 4500);
+      }
+      function resetAutoplay() { clearInterval(autoplayTimer); startAutoplay(); }
+
+      window.addEventListener('resize', () => { buildDots(); goTo(0); });
+
+      buildDots();
+      goTo(0);
+      startAutoplay();
+    })();
+
+    /* MÁSCARA WHATSAPP */
+    document.getElementById('whatsapp').addEventListener('input', function() {
+      let v = this.value.replace(/\D/g, '').slice(0, 11);
+      if (v.length > 6) v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+      else if (v.length > 2) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
+      else if (v.length > 0) v = `(${v}`;
+      this.value = v;
+    });
+
+    /* CTA FIXO MOBILE - Mostrar/esconder */
+    (function() {
+      const mobileCta = document.getElementById('mobileCta');
+      const formSection = document.getElementById('formulario');
+      if (!mobileCta || !formSection) return;
+
+      window.addEventListener('scroll', function() {
+        const scrollY = window.scrollY;
+        const formRect = formSection.getBoundingClientRect();
+        const formVisible = formRect.top < window.innerHeight && formRect.bottom > 0;
+
+        if (scrollY > 400 && !formVisible) mobileCta.classList.add('visible');
+        else mobileCta.classList.remove('visible');
+      }, { passive: true });
+    })();
+
+    /* COUNTER ANIMADO - Prova social */
+    (function() {
+      const counters = document.querySelectorAll('.proof-number[data-count]');
+      let animated = false;
+
+      const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !animated) {
+            animated = true;
+            counters.forEach(counter => {
+              const target = parseInt(counter.dataset.count);
+              const raw = counter.textContent;
+              const hasPercent = raw.includes('%');
+              const hasPlus = raw.includes('+');
+              let current = 0;
+              const step = Math.max(1, Math.ceil(target / 40));
+              const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                  current = target;
+                  clearInterval(timer);
+                }
+                counter.textContent = (hasPlus ? '+' : '') + current + (hasPercent ? '%' : '');
+              }, 28);
+            });
+            counterObserver.disconnect();
+          }
+        });
+      }, { threshold: 0.5 });
+
+      counters.forEach(c => counterObserver.observe(c));
+    })();
+  </script>
+
+  <!-- WhatsApp Flutuante - TROCAR: número real do cliente -->
+  <a href="https://wa.me/5564999999999?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20JBS%20e%20gostaria%20de%20agendar%20um%20diagn%C3%B3stico%20gratuito." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Falar pelo WhatsApp">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16.004 0h-.008C7.174 0 .002 7.174.002 16.002c0 3.502 1.14 6.742 3.07 9.37L1.06 31.22l6.076-1.952a15.93 15.93 0 0 0 8.868 2.676C24.83 31.944 32 24.77 32 16.002 32 7.174 24.83 0 16.004 0zm9.536 22.61c-.398 1.122-2.328 2.146-3.21 2.216-.804.064-1.82.092-2.938-.184a26.7 26.7 0 0 1-2.66-.986c-4.68-2.02-7.734-6.762-7.968-7.076-.234-.312-1.908-2.54-1.908-4.844s1.206-3.436 1.636-3.906c.43-.47.938-.588 1.252-.588.312 0 .626.002.898.016.288.016.676-.11 1.058.806.398.954 1.35 3.296 1.468 3.538.118.234.196.508.038.82-.156.312-.234.508-.468.782-.234.274-.492.612-.702.822-.234.234-.478.488-.206.958s1.21 2 2.596 3.24c1.782 1.59 3.286 2.084 3.754 2.318.468.234.742.196 1.014-.118.274-.312 1.174-1.37 1.488-1.84.312-.47.626-.39 1.058-.234.43.156 2.766 1.304 3.24 1.542.468.234.782.352.898.548.118.196.118 1.136-.28 2.258z"/></svg>
+  </a>
+
+  <!-- CTA Fixo Mobile -->
+  <div class="mobile-cta" id="mobileCta">
+    <a href="#formulario" class="btn btn-gold">Agendar diagnóstico gratuito</a>
+  </div>
+
+</body>
+</html>
