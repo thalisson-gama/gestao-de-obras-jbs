@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cwebp -version)",
+      "Bash(magick -version)",
+      "Bash(python -c \"from PIL import Image; print\\('Pillow OK', Image.__version__ if hasattr\\(Image,'__version__'\\) else ''\\)\")",
+      "Bash(python convert_to_webp.py)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(python -c ':*)"
+    ]
+  }
+}
