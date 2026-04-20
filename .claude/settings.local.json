@@ -6,7 +6,9 @@
       "Bash(python -c \"from PIL import Image; print\\('Pillow OK', Image.__version__ if hasattr\\(Image,'__version__'\\) else ''\\)\")",
       "Bash(python convert_to_webp.py)",
       "mcp__Claude_Preview__preview_start",
-      "Bash(python -c ':*)"
+      "Bash(python -c ':*)",
+      "Bash(rm -f card-1.jpg.jpeg card-2.jpg.jpeg card-3.jpg.jpeg)",
+      "Bash(ls card-real-*.webp)"
     ]
   }
 }
