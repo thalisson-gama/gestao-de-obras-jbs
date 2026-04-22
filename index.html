@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="JBS - Jonathan Berlezi Engenheiro Civil. Administração de obras residenciais de R$ 300 a R$ 500 mil em Mineiros - GO. Engenheiro responsável, prestação de contas semanal e orçamento transparente." />
   <title>JBS - Jonathan Berlezi Engenheiro Civil | Administração de Obras</title>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TJ3C9MH9');</script>
+  <!-- End Google Tag Manager -->
   <link rel="icon" type="image/webp" href="assets/icon-jbs.webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -1143,6 +1150,11 @@
 </head>
 <body>
 
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJ3C9MH9"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
   <!-- ============================================================
        1. HERO
   ============================================================ -->
@@ -1724,8 +1736,8 @@
       document.getElementById(errId).classList.remove('show');
     }
 
-    // TROCAR: URL do webhook (Make.com, n8n, Zapier, etc.)
-    const WEBHOOK_URL = 'https://SEU_WEBHOOK_AQUI';
+    // Webhook AtenderBem - CRM da M2Black
+    const WEBHOOK_URL = 'https://m2black.atenderbem.com/webhookcapture/capture/c3e06d0e381f4fdbb8985bfa410119bb';
 
     function submitForm() {
       if (!validateStep2()) return;
@@ -1735,17 +1747,45 @@
       submitBtn.textContent = 'Enviando...';
       submitBtn.disabled = true;
 
+      // UTMs da URL (string vazia se ausente)
+      const params = new URLSearchParams(window.location.search);
+      const getUtm = (k) => params.get(k) || '';
+
+      // WhatsApp: somente dígitos, sem código do país (+55)
+      let waDigits = document.getElementById('whatsapp').value.replace(/\D/g, '');
+      if (waDigits.startsWith('55') && waDigits.length > 11) waDigits = waDigits.slice(2);
+
+      // Data/Horário pt-BR
+      const now = new Date();
+      const pad = (n) => String(n).padStart(2, '0');
+      const dataStr = `${pad(now.getDate())}/${pad(now.getMonth()+1)}/${now.getFullYear()}`;
+      const horarioStr = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
+
       const payload = {
-        nome: document.getElementById('nome').value.trim(),
-        email: document.getElementById('email').value.trim(),
-        whatsapp: document.getElementById('whatsapp').value.trim(),
+        // Padrão AtenderBem
+        Nome: document.getElementById('nome').value.trim(),
+        Email: document.getElementById('email').value.trim(),
+        WhatsApp: waDigits,
+
+        // Customizadas JBS
         terreno: document.getElementById('terreno').value,
-        projeto: document.getElementById('projeto').value,
+        projeto_arquitetonico: document.getElementById('projeto').value,
         cidade: document.getElementById('cidade').value.trim(),
         renda: document.getElementById('renda').value.trim(),
-        cliente: 'JBS - Jonathan Berlezi',
-        enviado_em: new Date().toISOString(),
-        pagina: window.location.href
+
+        // Metadados de origem
+        Nome_do_site: 'JBS - Jonathan Berlezi Engenharia',
+        Nome_da_pagina: document.title,
+        URL_da_pagina: window.location.href,
+        Data: dataStr,
+        Horario: horarioStr,
+
+        // UTMs
+        utm_source: getUtm('utm_source'),
+        utm_medium: getUtm('utm_medium'),
+        utm_campaign: getUtm('utm_campaign'),
+        utm_term: getUtm('utm_term'),
+        utm_content: getUtm('utm_content')
       };
 
       fetch(WEBHOOK_URL, {
